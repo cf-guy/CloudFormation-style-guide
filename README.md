@@ -8,6 +8,12 @@ Guiding principles
 - Aim for clarity and consistency, over brevity
 - Good names serve to document the purpose
 
+Template formats
+===
+
+- `YAML` shines over `JSON` in terms of expressiveness, and brevity. Here are some examples of [YAML wins!](examples/yaml_wins.md). OTOH, here are some examples of [JSON wins!](examples/json_wins.md)
+- When in doubt, the easy availability of a capable text editor wins the argument. Having said that, most editors will _NOT_ flag indentation issues in a YAML template, whereas every JSON editor worth its salt _WILL_ flag a malformed JSON template!
+
 Naming
 ====
 
@@ -36,16 +42,12 @@ Parameters:
     Description: the desired capacity for the Auto Scaling Group configured for the fleet
     Type: Number
 
-  ...
     
-  Resources:
-    autoScalingGroup:
-      Type: AWS::AutoScaling::AutoScalingGroup
-      Properties:
-        DesiredCapacity: !Ref DesiredCapacity
-    
-  ... 
-  
+Resources:
+  autoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      DesiredCapacity: !Ref DesiredCapacity
 
 ```
 
@@ -59,16 +61,12 @@ Parameters:
   BucketName:
     Description: the name for the S3 bucket
     Type: String
-
-  ...
     
-  Resources:
-    bucket:
-      Type: AWS::S3::Bucket
-      Properties:
-        Name: !Ref BucketName
-    
-  ... 
+Resources:
+  bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      Name: !Ref BucketName
 
 ```
 
@@ -78,4 +76,5 @@ Contributing
 ====
 
 - For new content: When contributing a new style guideline (or an example to an existing style guideline), simply make the change inline to this `README.md` and submit a pull request
-- For changes to content: If you wish to propose a change to the style guideline or a correction to an example, create an issue with a description indicating the guideline to modify, and provide the changed style guideline and any examples in the body of the issue 
+- For changes to content: If you wish to propose a change to the style guideline or a correction to an example, create an issue with a description indicating the guideline to modify, and provide the changed style guideline and any examples in the body of the issue
+- All example CloudFormation snippets should be valid templates (or parts of valid templates)  
