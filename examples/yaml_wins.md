@@ -4,11 +4,16 @@ Example:
 
 ```yaml
 
+Parameters:
+  ImageId: 
+    Description: Amazon Machine Image Id for the webserver instance
+    Type: AWS::EC2::Image::Id
+
 Resources:
   webserver:
     Type: AWS::EC2::Instance
     Properties:
-      ImageId:
+      ImageId: !Ref ImageId
       UserData:
         Fn::Base64:
           !Sub |
@@ -21,7 +26,39 @@ Resources:
 using JSON:
 
 ```json
-"TBD"
+{
+  "Resources": {
+    "webserver": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": "",
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Join": [
+              "", [
+                "#!/bin/bash -eux \n",
+                "yum install -y aws-cfn-bootstrap \n",
+                "/opt/aws/bin/cfn-init",
+                " -r ", 
+                {
+                  "Ref": "webserver"
+                },
+                " -s ",
+                {
+                  "Ref": "AWS::StackId"
+                },
+                " --region ",
+                {
+                  "Ref": "AWS::Region"
+                }
+              ]
+            ]
+          }
+        }
+      }
+    }
+  }
+}
 
 ```
 
