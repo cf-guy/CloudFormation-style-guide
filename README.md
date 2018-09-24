@@ -17,7 +17,7 @@ Template formats
 Naming
 ====
 
-- The notation that the CloudFormation service follows for `Type`, `Properties`, etc. is strictly CamelCase, with names that begin with uppercase letters. We may follow the same convention, to the extent possible, for names to be chosen by template authors (such as the names of parameters, logical names for resources,  mappings, conditions, etc.)
+- The notation that the CloudFormation service follows for `Type`, `Properties`, etc. is strictly [PascalCase](http://wiki.c2.com/?PascalCase), with names that begin with uppercase letters. We may follow the same convention, to the extent possible, for names to be chosen by template authors (such as the names of parameters, logical names for resources,  mappings, conditions, etc.)
 
 For example, the public IP address for an EC2 instance is the return value `PublicIp` (and not ~~`PublicIP`~~)
 
